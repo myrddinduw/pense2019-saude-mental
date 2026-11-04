@@ -1,0 +1,10 @@
+pandas>=2.0
+numpy>=1.26
+scipy>=1.11
+plotly>=5.0
+streamlit>=1.30
+pytest>=8.0
+# statsmodels opcional, para conferência cruzada da regressão
+statsmodels>=0.14
+# Versões exatas não fixadas: pip/streamlit/plotly não puderam ser instalados no ambiente de desenvolvimento.
+# Testados no ambiente: pandas 3.0.5, numpy 2.5.3, scipy 1.18.1, pytest 9.1.1.

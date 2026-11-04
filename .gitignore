@@ -1,0 +1,36 @@
+# Python
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+
+# Dados brutos (não redistribuir, ver README)
+data/raw/*
+!data/raw/.gitkeep
+
+# Segredos / variáveis de ambiente
+.env
+.env.*
+*.key
+*.pem
+secrets.*
+
+# Config de ferramentas de IA (não deve subir ao repositório do grupo)
+.claude/
+.claude.json
+.cursor/
+.copilot/
+.codex/
+CLAUDE.local.md
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+
+# Sistema operacional
+.DS_Store
+Thumbs.db

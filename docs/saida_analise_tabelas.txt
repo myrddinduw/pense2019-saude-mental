@@ -1,0 +1,67 @@
+== Mulher - Homem (pp) ==
+                            Mulher   Homem  dif_pp  ...  ic_sup  razao  p_aprox
+indicador                                           ...                        
+Autoavaliação negativa      26.992   8.013  18.979  ...  19.890  3.368    0.000
+Irritado(a)/nervoso(a)      54.598  26.739  27.859  ...  29.077  2.042    0.000
+Muito preocupado(a)         59.811  41.118  18.693  ...  20.097  1.455    0.000
+Ninguém se preocupa comigo  39.762  19.904  19.858  ...  20.987  1.998    0.000
+Sem amigos próximos          3.760   4.227  -0.467  ...   0.051  0.889    0.077
+Triste                      44.862  17.521  27.340  ...  28.481  2.560    0.000
+Vida não vale a pena        29.619  12.978  16.641  ...  17.668  2.282    0.000
+
+[7 rows x 7 columns]
+== Pública - Privada (pp) ==
+                            Pública  Privada  dif_pp  ...  ic_sup  razao  p_aprox
+indicador                                             ...                        
+Autoavaliação negativa       17.977   16.027   1.950  ...   2.780  1.122      0.0
+Irritado(a)/nervoso(a)       40.406   43.630  -3.224  ...  -2.125  0.926      0.0
+Muito preocupado(a)          48.493   63.044 -14.551  ... -13.226  0.769      0.0
+Ninguém se preocupa comigo   30.669   25.905   4.763  ...   5.771  1.184      0.0
+Sem amigos próximos           4.325    2.010   2.315  ...   2.687  2.152      0.0
+Triste                       31.794   29.014   2.780  ...   3.776  1.096      0.0
+Vida não vale a pena         22.273   16.391   5.882  ...   6.729  1.359      0.0
+
+[7 rows x 7 columns]
+== 16-17 vs 13-15 ==
+                             13_15   16_17  dif_pp  ic_inf  ic_sup  p_aprox
+indicador                                                                  
+Autoavaliação negativa      16.918  19.106   2.188   1.194   3.181    0.000
+Irritado(a)/nervoso(a)      39.390  43.589   4.199   2.935   5.463    0.000
+Muito preocupado(a)         47.225  56.784   9.559   7.933  11.185    0.000
+Ninguém se preocupa comigo  29.434  30.976   1.541   0.328   2.754    0.013
+Sem amigos próximos          3.552   4.793   1.241   0.673   1.808    0.000
+Triste                      30.442  33.130   2.688   1.473   3.902    0.000
+Vida não vale a pena        21.158  21.902   0.745  -0.305   1.795    0.164
+== Extremos entre UFs ==
+                                     menor_UF  ...  ICs_nao_se_sobrepoem
+indicador                                      ...                      
+Autoavaliação negativa               Maranhão  ...                  True
+Irritado(a)/nervoso(a)               Maranhão  ...                  True
+Muito preocupado(a)                  Maranhão  ...                  True
+Ninguém se preocupa comigo              Piauí  ...                  True
+Sem amigos próximos         Rio Grande do Sul  ...                  True
+Triste                               Maranhão  ...                  True
+Vida não vale a pena                 Maranhão  ...                  True
+
+[7 rows x 5 columns]
+== Spearman entre UFs (n=27) ==
+indicador                   Autoavaliação negativa  ...  Vida não vale a pena
+indicador                                           ...                      
+Autoavaliação negativa                        1.00  ...                  0.76
+Irritado(a)/nervoso(a)                        0.76  ...                  0.37
+Muito preocupado(a)                           0.61  ...                  0.25
+Ninguém se preocupa comigo                    0.60  ...                  0.69
+Sem amigos próximos                           0.02  ...                  0.47
+Triste                                        0.95  ...                  0.74
+Vida não vale a pena                          0.76  ...                  1.00
+
+[7 rows x 7 columns]
+== Regiões, autoavaliação negativa ==
+                 p  ic_inf  ic_sup
+local                             
+Brasil        17.7    17.2    18.2
+Norte         17.4    16.0    18.8
+Nordeste      15.8    15.0    16.5
+Sudeste       18.4    17.4    19.5
+Sul           18.7    17.4    20.0
+Centro-Oeste  19.6    18.4    20.8
