@@ -1,5 +1,10 @@
 # Observatório Estatístico de Saúde Mental e Vulnerabilidades Psicossociais
 
+[![Abrir app no Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://pense2019-saude-menta-mik7kzznfxgzzbepyhyfx6.streamlit.app/)
+
+**App ao vivo (sem precisar instalar nada):**
+https://pense2019-saude-menta-mik7kzznfxgzzbepyhyfx6.streamlit.app/
+
 Projeto FMU TECH Inovação 2026.2 (Bacharelado em Estatística, ODS 3), apresentação em
 7-8/dez/2026. Este README é o ponto de partida para o grupo: explica a pesquisa, a
 estrutura do repositório e como rodar tudo na sua máquina.
