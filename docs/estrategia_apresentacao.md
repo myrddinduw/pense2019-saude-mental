@@ -12,11 +12,11 @@ o app Streamlit como demonstração viva, não só slides.
 | 1 | Gancho + problema | 1 min | ODS 3. Frase de abertura concreta: "escolares sem amigos próximos têm quase o dobro de chance de autoavaliação negativa sobre a própria vida — mesmo depois de descontar sexo, idade, escola, família e bullying." Não abrir com metodologia. |
 | 2 | Pergunta, público e título | 1 min | Pergunta de pesquisa (protocolo_pesquisa.md). Público: escolares 13-17 anos, rede pública e privada, Brasil. Título oficial do projeto. |
 | 3 | Base de dados (rápido, credibilidade) | 1,5 min | PeNSE 2019/IBGE, 124.898 alunos no domínio, desenho amostral complexo (escola/estrato/peso). Uma frase sobre por que isso importa: "sem o peso certo, a margem de erro sai errada". Citar validação: 2.760 estimativas replicadas das tabelas oficiais do IBGE, 93% com erro < 0,1 ponto percentual — é isso que dá confiança nos números que vêm a seguir. |
-| 4 | DEMO EM VIVO do app | 4 min | Abrir o Streamlit direto (não print). Ordem: Panorama (prevalências com IC95%) → Comparações (escolher "sem amigos" × sexo/escola, deixar a banca pedir um grupo) → Resultados (OR ajustada). Deixar 1 interação ser pedida pela banca ao vivo (dá sensação de sistema funcional de verdade). |
+| 4 | DEMO EM VIVO do app | 4 min | Abrir o Streamlit direto (não print). Ordem: **Início** (4 números-chave, 20 s) → **Acúmulo de vulnerabilidades** (o gráfico mais forte: 6% → 41% → 60%) → **Priorização por UF** (perguntar à banca "de qual estado vocês são?" e mostrar onde ele fica; explicar em 1 frase por que só 4 UFs diferem do Brasil depois da correção de Holm) → **Fatores associados** (gráfico de OR + as frases em linguagem simples). Mostrar o botão *Baixar tabela* uma vez: é o "uso real" para um gestor. |
 | 5 | Resultado principal (H1) | 2 min | OR bruta 2,23 → ajustada completa 1,77 (IC95% 1,48–2,12): associação robusta, diminui ao controlar família/pares, mas não desaparece. H0 rejeitada. |
 | 6 | Achado honesto/contraintuitivo | 1 min | "Preocupação" teve OR 0,78 (sentido invertido) — mostrar que não se escondeu um resultado que não bateu com a expectativa; isso é o que dá credibilidade científica diante da banca. |
 | 7 | Limitações, sem rodeio | 1 min | Transversal (sem causalidade), autorrelato, exclui quem está fora da escola. Dizer isso ANTES que perguntem — mostra maturidade, não fragilidade. |
-| 8 | Solução/aplicação prática + fechamento | 0,5 min | Para quem serve: gestores escolares/secretarias de educação priorizando apoio psicossocial por grupo de risco (agregado), não diagnóstico individual. Encerrar com a frase de abertura, fechando o círculo. |
+| 8 | Solução/aplicação prática + fechamento | 0,5 min | Para quem serve: gestores escolares/secretarias de educação priorizando apoio psicossocial por grupo de risco (agregado), não diagnóstico individual. Citar as personas e requisitos de `proposta_e_requisitos.md` (mostra que é produto pensado para um usuário, não só análise). Encerrar com a frase de abertura, fechando o círculo. |
 
 ## Papéis (se apresentação em grupo)
 Dividir por função real do projeto, não por slide: quem fala de **dados/desenho amostral**
@@ -40,7 +40,16 @@ mercado da banca). O orientador/estatística pode assumir perguntas técnicas na
 - *"Por que 2019 e não um ano mais recente?"* → Única edição com bloco completo de bullying/
   cyberbullying e dicionário oficial verificado disponível para esta análise.
 - *"Qual o uso de mercado/impacto real?"* → Painel de priorização para redes escolares/políticas
-  públicas (ODS 3), não produto clínico.
+  públicas (ODS 3), não produto clínico. Exemplo concreto: 11% dos alunos acumulam 3 ou mais
+  vulnerabilidades e concentram a maior parte do sofrimento; ações contra bullying e de
+  aproximação com as famílias alcançam justamente esse grupo.
+- *"Por que o seu estado não aparece como pior se ele está no topo do ranking?"* → Com 27 UFs
+  testadas ao mesmo tempo, ~1 diferença 'significativa' apareceria só por acaso; a correção de
+  Holm evita isso. Intervalos sobrepostos = ordem do ranking não é exata.
+- *"Esse índice de acúmulo foi planejado?"* → Não, é exploratório (o protocolo registra a
+  hipótese confirmatória antes); por isso aparece rotulado como exploratório no app.
+- *"Como sabem que o sistema está certo?"* → Lógica separada da interface e testada (19 testes
+  automáticos) + validação contra o IBGE.
 
 ## O que NÃO fazer
 - Não abrir com metodologia/desenho amostral — perde o membro de mercado nos primeiros 30s.
