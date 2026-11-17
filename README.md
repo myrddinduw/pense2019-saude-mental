@@ -54,8 +54,9 @@ Se precisar reprocessar do zero (não é necessário para rodar o app):
 
 ```
 app/
-  app.py                   # Dashboard Streamlit (o "sistema funcional" do projeto)
+  app.py                   # Dashboard Streamlit (só interface; as contas ficam em src/painel.py)
 src/
+  painel.py                # Lógica do painel: comparações, ranking de UFs (Holm), acúmulo de vulnerabilidades, interpretação das OR
   preparar_dados.py        # Microdados brutos -> base analítica (limpeza, códigos de ausente)
   estatistica.py           # Estimadores próprios para amostra complexa (proporção, diferença, regressão logística ponderada)
   modelos.py                # Roda todos os modelos de regressão (confirmatório + sensibilidade)
@@ -67,6 +68,7 @@ data/
   raw/                      # Microdados brutos (vazio no repo, ver seção 2)
   processed/                # Base pronta para análise (versionada, já inclusa)
 docs/
+  proposta_e_requisitos.md      # ITENS DO EDITAL: ficha do projeto, personas, requisitos, modelagem (diagramas), roadmap
   protocolo_pesquisa.md         # Pergunta, hipóteses, plano de análise (definido ANTES dos resultados)
   dicionario_variaveis.md       # De onde vem cada coluna (código oficial do IBGE)
   metodologia.md                 # Desenho amostral, estimadores, validação
@@ -79,6 +81,7 @@ docs/
 tests/
   test_estatistica.py       # Testa src/estatistica.py com dados sintéticos de verdade conhecida
   test_tabelas_ibge.py      # Testa a leitura das tabelas do IBGE
+  test_painel.py            # Testa src/painel.py (Holm, ranking, acúmulo, diferenças, formatação)
 requirements.txt
 ```
 
@@ -88,8 +91,8 @@ Pré-requisito: Python 3.11+ (testado com 3.12).
 
 ```bash
 # 1. Clonar e entrar na pasta
-git clone <url-do-repositorio>
-cd projeto-saude-mental
+git clone https://github.com/myrddinduw/pense2019-saude-mental.git
+cd pense2019-saude-mental
 
 # 2. Ambiente virtual
 python3 -m venv .venv
@@ -134,9 +137,13 @@ base analítica (data/processed/analitica_pense2019.csv.gz)
         ├── src/modelos.py ──────► roda a bateria de modelos (bruto, ajustado,
         │                          sensibilidade) e salva docs/resultados_modelos.csv
         │
-        └── app/app.py ──────────► dashboard Streamlit, chama estatistica.py
-                                    em tempo real conforme o usuário escolhe
-                                    indicador/grupo na interface
+        ├── src/painel.py ───────► regras do painel (comparações, ranking de UFs
+        │                          com correção de Holm, acúmulo de vulnerabilidades,
+        │                          frases de interpretação), testadas em tests/
+        │
+        └── app/app.py ──────────► dashboard Streamlit: só desenha a interface e
+                                    chama src/painel.py em tempo real conforme o
+                                    usuário escolhe indicador/grupo
 ```
 
 A validação externa (`src/validacao_ibge.py`) é um caminho paralelo: pega as mesmas
@@ -155,6 +162,13 @@ IBGE — é isso que dá confiança de que o estimador próprio (feito do zero, 
   raramente entendem os problemas do filho (OR 3,20).
 - Achado contraintuitivo, registrado sem esconder: o item "muito preocupado(a)" teve OR
   **0,78** (sentido invertido) — ver nota de cautela em `docs/resultados.md`.
+- **Acúmulo de vulnerabilidades (exploratório):** a autoavaliação negativa vai de **6,0%**
+  entre quem não relata nenhum de 5 fatores (sem amigos, bullying, cyberbullying, pais que
+  raramente entendem, agressão familiar) para **41,3%** com 3 e **60,0%** com 4 ou mais;
+  11,1% dos alunos têm 3 ou mais.
+- **Priorização por UF:** depois da correção de Holm para 27 comparações, só Mato Grosso do
+  Sul fica acima do Brasil em autoavaliação negativa, e Maranhão, Piauí e Paraíba abaixo — o
+  resto não difere da média nacional (ranking "cru" exageraria as diferenças).
 - **Validação externa:** 2.760 estimativas replicadas das tabelas oficiais do IBGE, 93%
   com diferença menor que 0,1 ponto percentual.
 
@@ -175,6 +189,7 @@ IBGE — é isso que dá confiança de que o estimador próprio (feito do zero, 
 
 | Dúvida | Arquivo |
 |---|---|
+| O que o edital pede e onde cada item está? Requisitos e diagramas? | `docs/proposta_e_requisitos.md` |
 | Qual é exatamente a pergunta e as hipóteses? | `docs/protocolo_pesquisa.md` |
 | De onde vem cada coluna/variável? | `docs/dicionario_variaveis.md` |
 | Como o desenho amostral foi tratado estatisticamente? | `docs/metodologia.md` |
@@ -185,9 +200,10 @@ IBGE — é isso que dá confiança de que o estimador próprio (feito do zero, 
 
 ## 9. Status e pendências
 
-- Estimadores validados, modelos ajustados, 11 testes passando, app funcional (testado
-  localmente com `streamlit run`).
+- Estimadores validados, modelos ajustados, 19 testes passando, app funcional.
+- App reorganizado em 7 páginas (Início com números-chave, Panorama, Comparar grupos,
+  Acúmulo de vulnerabilidades, Priorização por UF, Fatores associados, Metodologia e
+  glossário), com gráficos com IC95%, frases em linguagem simples e download em CSV.
 - Pendente: validar com o orientador a regra de corte do "sofrimento frequente"; buscar
-  literatura adicional com busca booleana formal (PubMed/SciELO/BVS); revisar a
-  navegação do app para equilibrar rigor técnico com clareza para a banca (que tem um
-  membro de mercado, não só acadêmico).
+  literatura adicional com busca booleana formal (PubMed/SciELO/BVS); testar a nova
+  versão do app no notebook/sala da apresentação.
